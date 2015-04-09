@@ -5,10 +5,6 @@ describe('Nota', function() {
 
     describe('Alla creazione', function() {
 
-        it.skip('Dovrebbe essere un oggetto instanziabile', function() {
-            var nota = new Nota();
-        });
-
         it('Dovrebbe prendere un testo ed esporlo come proprietà', function() {
            var nota = new Nota('testo di prova');
             expect(nota).to.have.property('testo', 'testo di prova');
@@ -18,6 +14,11 @@ describe('Nota', function() {
            expect(function() {
                var nota = new Nota();
            }).to.throw(Error);
+        });
+
+        it('dovrebbe accettare un testo composto da un solo zero', function() {
+           var nota = new Nota(0);
+            expect(nota).to.have.property('testo', '0');
         });
 
     });

@@ -1,7 +1,7 @@
 var Nota = function( testo ) {
-    if(!testo) { throw new Error() }
+    if(testo === undefined) { throw new Error() }
 
-    this.testo = testo;
+    this.testo = '' + testo;
 }
 
 module.exports = Nota
