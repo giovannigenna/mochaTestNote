@@ -31,9 +31,18 @@ describe('Nota', function() {
                      { descrizione: 'dovrebbe restituire la tag per un testo con una tag',
                        input: '#test',
                        output: ['#test'] },
-                     { descrizione: 'dovrebbe restituire un array vuoto in caso il testo sia vuoto',
+                     { descrizione: 'dovrebbe restituire un array con i 3 tags',
                        input: '#test #ciao #mocha',
-                       output: ['#test', '#ciao', '#mocha'] }];
+                       output: ['#test', '#ciao', '#mocha'] },
+                     { descrizione: 'dovrebbe restituire le stesse tag a prescindere dagli spazi',
+                       input: '#test       #ciao',
+                       output: ['#test', '#ciao'] },
+                     { descrizione: 'dovrebbe estrarre tag anche in presenza di altro testo',
+                       input: 'oggi sono al #lavoro e poi #gioco',
+                       output: ['#lavoro', '#gioco'] },
+                     { descrizione: 'dovrebbe estrarre tag anche se sono attaccate',
+                       input: 'oggi sono al #lavoro#gioco',
+                       output: ['#lavoro', '#gioco'] }];
 
         tests.forEach(function(test) {
            it(test.descrizione, function() {

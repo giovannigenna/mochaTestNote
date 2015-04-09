@@ -5,13 +5,10 @@ var Nota = function( testo ) {
 }
 
 Nota.prototype.tag = function() {
-    var tag = [];
+    return this.testo.split(/(?=#)|\s+/)
+                     .filter( function(parola) { return parola.charAt(0) == '#'; } )
+                     .map( function(parola) { return parola.replace(/[.;,|]+$/, ''); });
 
-    if(this.testo) {
-        tag = this.testo.split(' ');
-    }
-
-    return tag;
 }
 
 
