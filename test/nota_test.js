@@ -25,21 +25,22 @@ describe('Nota', function() {
 
     describe('.tag()', function() {
 
-        it('dovrebbe restituire un array vuoto in caso il testo sia vuoto', function() {
-            var nota = new Nota('');
-            expect( nota.tag() ).to.eql( [] );
-        });
+        var tests = [{ descrizione: 'dovrebbe restituire un array vuoto in caso il testo sia vuoto',
+                       input: '',
+                       output: [] },
+                     { descrizione: 'dovrebbe restituire la tag per un testo con una tag',
+                       input: '#test',
+                       output: ['#test'] },
+                     { descrizione: 'dovrebbe restituire un array vuoto in caso il testo sia vuoto',
+                       input: '#test #ciao #mocha',
+                       output: ['#test', '#ciao', '#mocha'] }];
 
-        it('dovrebbe restituire la tag per un testo con una tag', function() {
-            var nota = new Nota('#test');
-            expect( nota.tag() ).to.eql( ['#test'] );
+        tests.forEach(function(test) {
+           it(test.descrizione, function() {
+               var nota = new Nota(test.input);
+               expect( nota.tag() ).to.eql( test.output );
+           });
         });
-
-        it('dovrebbe restituire la tag per un testo con una tag', function() {
-            var nota = new Nota('#test #ciao #mocha');
-            expect( nota.tag() ).to.eql( ['#test', '#ciao', '#mocha'] );
-        });
-
     });
 
 });
