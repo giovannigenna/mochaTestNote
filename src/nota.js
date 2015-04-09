@@ -4,4 +4,15 @@ var Nota = function( testo ) {
     this.testo = '' + testo;
 }
 
+Nota.prototype.tag = function() {
+    var tag = [];
+
+    if(this.testo) {
+        tag = this.testo.split(' ');
+    }
+
+    return tag;
+}
+
+
 module.exports = Nota
